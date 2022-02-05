@@ -16,9 +16,10 @@ try{
     Copy-Item *.ttf c:\windows\fonts\
     }
 catch{[EXCEPTION]}
+Write-Host ""
 
 # Set PSGallery as trusted (confirm flag for Install-Module still prompt on untrusted repo
-)
+
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 # Oh-My-Posh install, add to default prompt, add theme
@@ -46,6 +47,8 @@ Write-Host "Setting Oh-My-Posh as prompt and setting theme" -ForegroundColor Whi
         }
     catch{[EXCEPTION]}
 
+Write-Host ""
+
 
 # Module installation
 
@@ -54,12 +57,13 @@ Write-Host "Installing Z,PsReadLine,Terminal-Icons" -ForegroundColor White -Back
     try{
         Install-Module -Name z -RequiredVersion 1.1.3 -confirm:$false
         Install-Module -Name Terminal-Icons -RequiredVersion 0.8.0 -confirm:$false
-        Install-Module -Name PSReadLine -AllowPrerelease -confirm:$false
+        Install-Module -Name PSReadLine -RequiredVersion 2.2.0-beta5 -AllowPrerelease -confirm$false
         }
     catch{[EXCEPTION]}
 
 
 Write-Host "Setting Powershell profile" -ForegroundColor White -BackgroundColor Blue
+Write-Host ""
 
 
 try{
@@ -71,7 +75,7 @@ try{
 catch{[EXCEPTION]}
 
 Write-Host "NOTE - If you are using OneDrive, you may need to copy into OneDrive\Documents\Powershell" -ForegroundColor Red -BackgroundColor Yellow
-
+Write-Host ""
 
 # Windows Terminal setup
 
