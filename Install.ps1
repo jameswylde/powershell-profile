@@ -12,7 +12,7 @@ Write-Host "Oh-MyPosh" -ForegroundColor White -BackgroundColor Blue
 
             }
             n{continue}
-        default{write-warning "    Y or N only."}
+        default{write-warning "Y or N only."}
     }
     
 Write-Host "Setting Oh-My-Posh as prompt and setting theme" -ForegroundColor White -BackgroundColor Blue
@@ -52,4 +52,25 @@ catch{[EXCEPTION]}
 Write-Host "NOTE - If you are using OneDrive, you may need to copy into OneDrive\Documents\Powershell" -ForegroundColor Red -BackgroundColor Yellow
 
 
-# C:\Users\$env:Username\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState
+# Windows Terminal setup
+
+Write-Host "Windows Terminal default settings" -ForegroundColor White -BackgroundColor Blue
+
+    try{
+        $dest3 = "C:\Users\$env:Username\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
+
+        if (!(Test-Path -path $dest3)) {New-Item $dest3 -Type Directory}
+        Copy-Item "settings.json" -Destination $dest3
+        }
+    catch{[EXCEPTION]}
+
+    try{
+        $dest4 = "C:\Users\$env:Username\Documents\PowerShell\WT_images\"
+
+        if (!(Test-Path -path $dest4)) {New-Item $dest4 -Type Directory}
+        Copy-Item "win.png","ubu.png" -Destination $dest4
+        }
+    catch{[EXCEPTION]}
+
+
+Write-Host "Open WindowsTerminal settings.json & Ctrl+F "ADD-USERNAME"" -ForegroundColor Red -BackgroundColor Yellow
