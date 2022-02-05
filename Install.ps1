@@ -1,5 +1,7 @@
 # Script to automate installation of Oh-MyPosh & Theme, Modules; Z, PSReadLine, Terminal-Icons, Windows Terminal conf
 
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+
 # Oh-My-Posh install, add to default prompt, add theme
 
 Write-Host "Oh-MyPosh" -ForegroundColor White -BackgroundColor Blue
