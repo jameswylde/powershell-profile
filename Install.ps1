@@ -30,7 +30,7 @@ Write-Host "Oh-MyPosh" -ForegroundColor White -BackgroundColor Blue
     switch($input){
             y{
 
-                Install-Module oh-my-posh -Scope CurrentUser
+                winget install JanDeDobbeleer.OhMyPosh
 
             }
             n{continue}
@@ -57,6 +57,7 @@ Write-Host "Installing Z,PsReadLine,Terminal-Icons" -ForegroundColor White -Back
     try{
         Install-Module -Name z -RequiredVersion 1.1.3 -confirm:$false
         Install-Module -Name Terminal-Icons -RequiredVersion 0.8.0 -confirm:$false
+        Remove-Module -Name PSReadLine
         Install-Module -Name PSReadLine -RequiredVersion 2.2.0-beta5 -AllowPrerelease -confirm$false
         }
     catch{[EXCEPTION]}
