@@ -13,7 +13,7 @@ try{
             Get-Childitem $file | ForEach-Object{ $fonts.CopyHere($_.fullname) }
         }
     }
-    Copy-Item *.ttf c:\windows\fonts\
+    #Copy-Item *.ttf c:\windows\fonts\
     }
 catch{[EXCEPTION]}
 Write-Host ""
