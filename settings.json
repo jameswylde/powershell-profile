@@ -89,7 +89,7 @@
                 "padding": "30",
                 "scrollbarState": "hidden",
                 "source": "Windows.Terminal.PowershellCore",
-                "startingDirectory": "C:\\Users\\ADD-USERNAME\\Documents\\github",
+                "startingDirectory": "%userprofile%",
                 "tabColor": "#00CC6A",
                 "useAcrylic": true
             },

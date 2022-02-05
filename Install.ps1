@@ -1,5 +1,24 @@
 # Script to automate installation of Oh-MyPosh & Theme, Modules; Z, PSReadLine, Terminal-Icons, Windows Terminal conf
 
+# Install required fonts
+
+Write-Output "Install fonts"
+try{
+    $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)
+    foreach ($file in Get-ChildItem *.ttf)
+    {
+        $fileName = $file.Name
+        if (-not(Test-Path -Path "C:\Windows\fonts\$fileName" )) {
+            Write-Output $fileName
+            Get-Childitem $file | ForEach-Object{ $fonts.CopyHere($_.fullname) }
+        }
+    }
+    Copy-Item *.ttf c:\windows\fonts\
+    }
+catch{[EXCEPTION]}
+
+# Set PSGallery as trusted (confirm flag for Install-Module still prompt on untrusted repo
+)
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 # Oh-My-Posh install, add to default prompt, add theme
