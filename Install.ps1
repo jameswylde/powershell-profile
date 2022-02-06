@@ -27,8 +27,16 @@ Write-Host $sep -ForegroundColor Green
 Write-Host ""
 
 
+# Update JSON with env:Username added to paths
 
+Write-Host "Setting user specific json variales" -ForegroundColor Green
 
+    $json = Get-Content "settings.json" | ConvertFrom-Json 
+    $json.profiles.list[0].backgroundImage = "C:\Users\$env:Username\Documents\PowerShell\WT_images\win.png"
+    $json | ConvertTo-Json -Depth 9 | Out-File "settings.json"
+
+Write-Host $sep -ForegroundColor Green
+Write-Host ""
 
 # Set PSGallery as trusted (confirm flag for Install-Module still prompt on untrusted repo
 
@@ -132,7 +140,6 @@ Write-Host "Windows Terminal default settings" -ForegroundColor Green
     catch{[EXCEPTION]}
 
 
-Write-Host "Open WindowsTerminal settings.json & Ctrl+F "ADD-USERNAME"" -ForegroundColor Red -BackgroundColor Yellow
-
 Write-Host $sep -ForegroundColor Green
 Write-Host ""
+

@@ -72,7 +72,7 @@
         [
             {
                 "acrylicOpacity": 0.59999999999999998,
-                "backgroundImage": "C:\\Users\\ADD-USERNAME\\Documents\\PowerShell\\WT_images\\win.png",
+                "backgroundImage": "",
                 "backgroundImageAlignment": "bottomRight",
                 "backgroundImageOpacity": 0.84999999999999998,
                 "backgroundImageStretchMode": "none",
@@ -113,7 +113,7 @@
             },
             {
                 "acrylicOpacity": 0.59999999999999998,
-                "backgroundImage": "C:\\Users\\ADD-USERNAME\\Documents\\PowerShell\\WT_images\\ubu.png",
+                "backgroundImage": "",
                 "backgroundImageAlignment": "bottomRight",
                 "backgroundImageOpacity": 0.84999999999999998,
                 "backgroundImageStretchMode": "none",
