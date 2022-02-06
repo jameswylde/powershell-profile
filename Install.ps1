@@ -8,8 +8,8 @@ $sep = "____________________________________________________________"
 
 # Install required fonts
 
-Write-Host $sep -ForegroundColor White -BackgroundColor Blue
-Write-Host "Installing required Nerd fonts" 
+Write-Host $sep -ForegroundColor Green
+Write-Host "Installing required Nerd fonts" -ForegroundColor Green
 try{
     $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)
     foreach ($file in Get-ChildItem *.ttf)
@@ -23,7 +23,7 @@ try{
     #Copy-Item *.ttf c:\windows\fonts\
     }
 catch{[EXCEPTION]}
-Write-Host $sep -ForegroundColor White -BackgroundColor Blue
+Write-Host $sep -ForegroundColor Green
 Write-Host ""
 
 
@@ -32,13 +32,13 @@ Write-Host ""
 
 # Set PSGallery as trusted (confirm flag for Install-Module still prompt on untrusted repo
 
-Write-Host "Setting PSGallery as trusted repo (revert if needed)"
+Write-Host "Setting PSGallery as trusted repo (revert if needed)" -ForegroundColor Green
 
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 # Oh-My-Posh install, add to default prompt, add theme
 
-Write-Host "Oh-MyPosh" -ForegroundColor White -BackgroundColor Blue
+Write-Host "Installing Oh-MyPosh" -ForegroundColor Green
 
     $input = Read-Host "Install Oh-My-Posh? [y/n]" 
     switch($input){
@@ -51,14 +51,14 @@ Write-Host "Oh-MyPosh" -ForegroundColor White -BackgroundColor Blue
         default{write-warning "Y or N only."}
     }
 
-Write-Host $sep -ForegroundColor White -BackgroundColor Blue
+Write-Host $sep -ForegroundColor Green
 Write-Host ""
 
 
 
 # Setting OMp as prompt and adding theme
     
-Write-Host "Setting Oh-My-Posh as prompt and setting theme" -ForegroundColor White -BackgroundColor Blue
+Write-Host "Setting Oh-My-Posh as prompt and setting theme" -ForegroundColor Green
 
     try{
         $dest = "C:\Users\$env:Username\AppData\Local\Programs\oh-my-posh\themes"
@@ -68,31 +68,32 @@ Write-Host "Setting Oh-My-Posh as prompt and setting theme" -ForegroundColor Whi
         }
     catch{[EXCEPTION]}
 
-Write-Host $sep -ForegroundColor White -BackgroundColor Blue
+Write-Host $sep -ForegroundColor Green
 Write-Host ""
 
 
 
 # Module installation
 
-Write-Host "Installing Z,PsReadLine,Terminal-Icons" -ForegroundColor White -BackgroundColor Blue
+Write-Host "Installing Z,PsReadLine,Terminal-Icons" -ForegroundColor Green
 
     try{
         Install-Module -Name z -RequiredVersion 1.1.3 -confirm:$false
         Install-Module -Name Terminal-Icons -RequiredVersion 0.8.0 -confirm:$false
-        Remove-Module -Name PSReadLine
-        Install-Module -Name PSReadLine -RequiredVersion 2.2.0-beta5 -AllowPrerelease -confirm$false
+        Get-InstalledModule -Name psreadline -AllVersions | Uninstall-Module
+        Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
+        # Install-Module -Name PSReadLine -RequiredVersion 2.2.0-beta5 -AllowPrerelease -confirm$false
         }
-    catch{[EXCEPTION]}
+    catch{Write-Output $_.Exception.GetType().Name}
 
-Write-Host $sep -ForegroundColor White -BackgroundColor Blue
+Write-Host $sep -ForegroundColor Green
 Write-Host ""
 
 
 
 
 # Set PowerShell profile to incorporate OMP and Module settings 
-Write-Host "Setting Powershell profile" -ForegroundColor White -BackgroundColor Blue
+Write-Host "Setting Powershell profile" -ForegroundColor Green
 Write-Host ""
 
     try{
@@ -105,14 +106,14 @@ Write-Host ""
 
 Write-Host "NOTE - If you are using OneDrive, you may need to copy into OneDrive\Documents\Powershell" -ForegroundColor Red -BackgroundColor Yellow
 Write-Host ""
-Write-Host $sep -ForegroundColor White -BackgroundColor Blue
+Write-Host $sep -ForegroundColor Green
 Write-Host ""
 
 
 
 # Windows Terminal setup
 
-Write-Host "Windows Terminal default settings" -ForegroundColor White -BackgroundColor Blue
+Write-Host "Windows Terminal default settings" -ForegroundColor Green
 
     try{
         $dest3 = "C:\Users\$env:Username\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
@@ -133,5 +134,5 @@ Write-Host "Windows Terminal default settings" -ForegroundColor White -Backgroun
 
 Write-Host "Open WindowsTerminal settings.json & Ctrl+F "ADD-USERNAME"" -ForegroundColor Red -BackgroundColor Yellow
 
-Write-Host $sep -ForegroundColor White -BackgroundColor Blue
+Write-Host $sep -ForegroundColor Green
 Write-Host ""
