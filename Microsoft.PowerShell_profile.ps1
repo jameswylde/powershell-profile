@@ -8,7 +8,7 @@ if ($host.Name -eq 'ConsoleHost')
     Import-Module PSReadLine
 }
 
-oh-my-posh --init --shell pwsh --config "%localappdata%\Programs\oh-my-posh\themes\wylde.json" | Invoke-Expression
+oh-my-posh --init --shell pwsh --config "~\AppData\Local\Programs\oh-my-posh\themes\wylde.json" | Invoke-Expression
 
 Import-Module -Name Terminal-Icons
 
