@@ -1,3 +1,3 @@
-Repo to automate most of my Powershell profile setup 
+Repo to automate most of my Powershell profile setup.
 
-Will install Oh-My-Posh, my OMP custom theme, required modules, Windows Terminal settings.json
+Will install Oh-My-Posh, set as prompt & install theme, Powershell profile with config for PSReadLine, Z, Terminal Icons, Nerd Fonts (glyphed), Windows Terminal settings
