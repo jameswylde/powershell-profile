@@ -3,7 +3,9 @@
 
 What script does:
 
-- Optionally install Windows Terminal and winget (installed by default on W11)
+Install winget beforehand, "App Service" in Microsoft store.
+
+- Optionally install Windows Terminal
 - Install Oh-My-Posh & my adapted OMP theme (match WT profile and Windows accent colour)
 - Install PSReadline, Z, TerminalIcons modules [PSReadline config @shanselman]
 - Install custom PS profile with config
