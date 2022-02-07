@@ -2,9 +2,9 @@
 
 $sep = "____________________________________________________________" 
 
-
-
-Write-Host "James Wylde - https://github.com/jameswylde/powershell-profile-setup.git" -ForegroundColor White -BackgroundColor Blue
+Write-Host "James Wylde - https://github.com/jameswylde/powershell-profile-setup.git" -ForegroundColor White -BackgroundColor Red
+Write-Host ""
+Write-Host ""
 
 # Install required fonts
 
