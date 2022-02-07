@@ -117,7 +117,6 @@ Write-Host $sep -ForegroundColor Green
 Write-Host ""
 
 
-
 # Module installation
 
 Write-Host "Installing Z,PsReadLine,Terminal-Icons modules - [7/9]" -ForegroundColor Green

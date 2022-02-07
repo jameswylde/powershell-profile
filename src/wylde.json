@@ -14,10 +14,10 @@
                     "style": "diamond",
                     "powerline_symbol": "",
                     "invert_powerline": false,
-                    "foreground": "#ffffff",
+                    "foreground": "#0A0A0A",
                     "background": "#00CC6A",
                     "leading_diamond": "",
-                    "trailing_diamond": "",
+                    "trailing_diamond": "",
                     "properties": {
                         "prefix": "  ",
                         "style": "folder"
@@ -43,7 +43,7 @@
                     "style": "powerline",
                     "powerline_symbol": "",
                     "invert_powerline": false,
-                    "foreground": "#ffffff",
+                    "foreground": "#0A0A0A",
                     "background": "#FF8C00",
                     "leading_diamond": "",
                     "trailing_diamond": "",
@@ -54,9 +54,9 @@
                     "style": "powerline",
                     "powerline_symbol": "",
                     "invert_powerline": false,
-                    "foreground": "#ffffff",
+                    "foreground": "#0A0A0A",
                     "background": "#0099BC",
-                    "leading_diamond": "",
+                    "leading_diamond": "",
                     "trailing_diamond": "",
                     "properties": {
                         "always_enabled": true,
