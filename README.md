@@ -1,4 +1,3 @@
-**Repo to automate setting up my Powershell profile**
 
 ![PS](https://i.imgur.com/rMu15Tk.gif)
 
@@ -12,6 +11,6 @@ What script does:
 - Backup previous profiles
 
 
-Install:
+Installation:
 
-```./install.ps1```
+```.\install.ps1```
