@@ -52,8 +52,8 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 Write-Host "Installing Oh-MyPosh - [4/8]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
-    $input = Read-Host "Install Oh-My-Posh? [y/n]" 
-    switch($input){
+    $choice = Read-Host "Install Oh-My-Posh? [y/n]" 
+    switch($choice){
             y{
 
                 winget install JanDeDobbeleer.OhMyPosh
