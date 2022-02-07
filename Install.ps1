@@ -52,7 +52,13 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 Write-Host "Backing up current PS profile - [4/9]" -ForegroundColor Green
 
-    Rename-Item $profile -NewName Microsoft.PowerShell_profile[BACKUP].ps1
+    try{
+        $dest3 = $profile
+
+        if (!(Test-Path -path $dest3)) {continue}
+        Rename-Item $profile -NewName Microsoft.PowerShell_profile[BACKUP].ps1
+        }
+    catch{[EXCEPTION]}
 
 # Oh-My-Posh install, add to default prompt, add theme
 
