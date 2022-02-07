@@ -92,7 +92,7 @@ Write-Host "Installing Z,PsReadLine,Terminal-Icons modules - [6/8]" -ForegroundC
 Write-Host $sep -ForegroundColor Green
 
     try{
-        Install-Module -Name z -RequiredVersion 1.1.3 -confirm:$false
+        Install-Module -Name z -RequiredVersion 1.1.3 -AllowClobber -confirm:$false
         Install-Module -Name Terminal-Icons -RequiredVersion 0.8.0 -confirm:$false
         #Get-InstalledModule -Name psreadline -AllVersions | Uninstall-Module
         Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
