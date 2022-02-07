@@ -52,6 +52,25 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 Write-Host "Installing Oh-MyPosh - [4/8]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
+function Install-WinGet()
+
+        # Function for Winget from @crutkas (winget installed by def on W11)
+        {
+            $hasPackageManager = Get-AppPackage -name "Microsoft.DesktopAppInstaller"
+
+            if(!$hasPackageManager)
+            {
+                $releases_url = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
+
+                [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+                $releases = Invoke-RestMethod -uri "$($releases_url)"
+                $latestRelease = $releases.assets | Where { $_.browser_download_url.EndsWith("msixbundle") } | Select -First 1
+            
+                Add-AppxPackage -Path $latestRelease.browser_download_url
+            }
+        }
+        Install-WinGet
+
     $choice = Read-Host "Install Oh-My-Posh? [y/n]" 
     switch($choice){
             y{
