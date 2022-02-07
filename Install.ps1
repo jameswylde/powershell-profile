@@ -9,31 +9,32 @@ Write-Host "James Wylde - https://github.com/jameswylde/powershell-profile-setup
 # Install required fonts
 
 Write-Host $sep -ForegroundColor Green
-Write-Host "Installing required Nerd fonts - [1/8]" -ForegroundColor Green
+Write-Host "Installing required Nerd fonts - [1/9]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
-try{
-    $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)
-    foreach ($file in Get-ChildItem *.ttf)
-    {
-        $fileName = $file.Name
-        if (-not(Test-Path -Path "C:\Windows\fonts\$fileName" )) {
-            Write-Host $fileName
-            Get-Childitem $file | ForEach-Object{ $fonts.CopyHere($_.fullname) }
+
+    try{
+        $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)
+        foreach ($file in Get-ChildItem .\fonts\ *.ttf)
+        {
+            $fileName = $file.Name
+            if (-not(Test-Path -Path "C:\Windows\fonts\$fileName" )) {
+                Write-Host $fileName
+                Get-Childitem $file | ForEach-Object{ $fonts.CopyHere($_.fullname) }
+            }
         }
-    }
-    #Copy-Item *.ttf c:\windows\fonts\
-    }
-catch{[EXCEPTION]}
+        #Copy-Item *.ttf c:\windows\fonts\
+        }
+    catch{[EXCEPTION]}
 
 Write-Host ""
 
 
 # Update JSON with env:Username added to paths
 
-Write-Host "Setting user specific json variales - [2/8]" -ForegroundColor Green
+Write-Host "Setting user specific json variales - [2/9]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
-    $json = Get-Content "settings.json" | ConvertFrom-Json 
+    $json = Get-Content ".\src\settings.json" | ConvertFrom-Json 
     $json.profiles.list[0].backgroundImage = "C:\Users\$env:Username\Documents\PowerShell\WT_images\win.png"
     $json | ConvertTo-Json -Depth 9 | Out-File "settings.json"
 
@@ -42,14 +43,20 @@ Write-Host ""
 
 # Set PSGallery as trusted (confirm flag for Install-Module still prompt on untrusted repo
 
-Write-Host "Setting PSGallery as trusted repo - [3/8]" -ForegroundColor Green
+Write-Host "Setting PSGallery as trusted repo - [3/9]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
+# Backing up current PS profile
+
+Write-Host "Setting PSGallery as trusted repo - [4/8]" -ForegroundColor Green
+
+    Rename-Item $profile -NewName Microsoft.PowerShell_profile[BACKUP].ps1
+
 # Oh-My-Posh install, add to default prompt, add theme
 
-Write-Host "Installing Oh-MyPosh - [4/8]" -ForegroundColor Green
+Write-Host "Installing Oh-MyPosh - [5/9]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
 function Install-WinGet()
@@ -89,14 +96,14 @@ Write-Host ""
 
 # Setting OMp as prompt and adding theme
     
-Write-Host "Setting Oh-My-Posh as prompt and setting theme - [5/8]" -ForegroundColor Green
+Write-Host "Setting Oh-My-Posh as prompt and setting theme - [6/9]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
     try{
         $dest = "C:\Users\$env:Username\AppData\Local\Programs\oh-my-posh\themes"
 
         if (!(Test-Path -path $dest)) {New-Item $dest -Type Directory}
-        Copy-Item "wylde.json" -Destination $dest
+        Copy-Item ".\src\wylde.json" -Destination $dest
         }
     catch{[EXCEPTION]}
 
@@ -107,7 +114,7 @@ Write-Host ""
 
 # Module installation
 
-Write-Host "Installing Z,PsReadLine,Terminal-Icons modules - [6/8]" -ForegroundColor Green
+Write-Host "Installing Z,PsReadLine,Terminal-Icons modules - [7/9]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
     try{
@@ -126,14 +133,14 @@ Write-Host ""
 
 
 # Set PowerShell profile to incorporate OMP and Module settings 
-Write-Host "Setting Powershell profile - [7/8]" -ForegroundColor Green
+Write-Host "Setting Powershell profile - [8/9]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
     try{
         $dest2 = "C:\Users\$env:Username\Documents\PowerShell"
 
         if (!(Test-Path -path $dest2)) {New-Item $dest2 -Type Directory}
-        Copy-Item "Microsoft.PowerShell_profile.ps1" -Destination $dest2
+        Copy-Item ".\src\Microsoft.PowerShell_profile.ps1" -Destination $dest2
         }
     catch{[EXCEPTION]}
 
@@ -146,14 +153,14 @@ Write-Host ""
 
 # Windows Terminal setup
 
-Write-Host "Windows Terminal default settings - [8/8]" -ForegroundColor Green
+Write-Host "Windows Terminal default settings - [9/9]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
     try{
         $dest3 = "C:\Users\$env:Username\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
 
         if (!(Test-Path -path $dest3)) {New-Item $dest3 -Type Directory}
-        Copy-Item "settings.json" -Destination $dest3
+        Copy-Item ".\src\settings.json" -Destination $dest3
         }
     catch{[EXCEPTION]}
 
@@ -161,7 +168,7 @@ Write-Host $sep -ForegroundColor Green
         $dest4 = "C:\Users\$env:Username\Documents\PowerShell\WT_images\"
 
         if (!(Test-Path -path $dest4)) {New-Item $dest4 -Type Directory}
-        Copy-Item "win.png" -Destination $dest4
+        Copy-Item ".\src\win.png" -Destination $dest4
         }
     catch{[EXCEPTION]}
 
