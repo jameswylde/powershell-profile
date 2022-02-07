@@ -54,10 +54,7 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 Write-Host "Backing up current PS profile - [4/9]" -ForegroundColor Green
 
     try{
-        $dest3 = $profile
-
-        if (!(Test-Path -path $dest3)) {continue}
-        Rename-Item $profile -NewName Microsoft.PowerShell_profile[BACKUP].ps1
+         if (test-path $profile){Rename-Item $profile -NewName Microsoft.PowerShell_profile[BACKUP].ps1}
         }
     catch{[EXCEPTION]}
 
@@ -85,8 +82,8 @@ function Install-WinGet()
         }
         Install-WinGet
 
-        $choice = Read-Host "Install Windows Terminal? [y/n]" 
-        switch($choice){
+        $choice1 = Read-Host "Install Windows Terminal? [y/n]" 
+        switch($choice1){
                 y{
     
                     winget install --id=Microsoft.WindowsTerminal -e
@@ -96,8 +93,8 @@ function Install-WinGet()
             default{write-warning "Y or N only."}
         }
 
-    $choice = Read-Host "Install Oh-My-Posh? [y/n]" 
-    switch($choice){
+    $choice2 = Read-Host "Install Oh-My-Posh? [y/n]" 
+    switch($choice2){
             y{
 
                 winget install JanDeDobbeleer.OhMyPosh
@@ -109,7 +106,6 @@ function Install-WinGet()
 
 
 Write-Host ""
-
 
 
 # Setting OMp as prompt and adding theme
