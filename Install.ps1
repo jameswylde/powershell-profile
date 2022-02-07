@@ -6,6 +6,7 @@ Write-Host "James Wylde - https://github.com/jameswylde/powershell-profile-setup
 Write-Host ""
 Write-Host ""
 
+
 # Install required fonts
 
 Write-Host $sep -ForegroundColor Green
@@ -62,7 +63,7 @@ Write-Host "Backing up current PS profile - [4/9]" -ForegroundColor Green
 
 # Oh-My-Posh install, add to default prompt, add theme
 
-Write-Host "Installing Oh-MyPosh - [5/9]" -ForegroundColor Green
+Write-Host "Installing Oh-MyPosh and/or Windows Terminal - [5/9]" -ForegroundColor Green
 Write-Host $sep -ForegroundColor Green
 
 function Install-WinGet()
@@ -77,12 +78,23 @@ function Install-WinGet()
 
                 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
                 $releases = Invoke-RestMethod -uri "$($releases_url)"
-                $latestRelease = $releases.assets | Where { $_.browser_download_url.EndsWith("msixbundle") } | Select -First 1
+                $latestRelease = $releases.assets | Where-Object { $_.browser_download_url.EndsWith("msixbundle") } | Select-Object -First 1
             
                 Add-AppxPackage -Path $latestRelease.browser_download_url
             }
         }
         Install-WinGet
+
+        $choice = Read-Host "Install Windows Terminal? [y/n]" 
+        switch($choice){
+                y{
+    
+                    winget install --id=Microsoft.WindowsTerminal -e
+    
+                }
+                n{continue}
+            default{write-warning "Y or N only."}
+        }
 
     $choice = Read-Host "Install Oh-My-Posh? [y/n]" 
     switch($choice){
