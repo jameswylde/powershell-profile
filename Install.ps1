@@ -58,6 +58,8 @@ Write-Host "Backing up current PS profile - [4/9]" -ForegroundColor Green
         }
     catch{[EXCEPTION]}
 
+    Write-Host ""
+
 # Oh-My-Posh install, add to default prompt, add theme
 
 Write-Host "Installing Oh-MyPosh and/or Windows Terminal - [5/9]" -ForegroundColor Green
