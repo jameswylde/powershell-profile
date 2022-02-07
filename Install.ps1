@@ -50,7 +50,7 @@ Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 # Backing up current PS profile
 
-Write-Host "Setting PSGallery as trusted repo - [4/8]" -ForegroundColor Green
+Write-Host "Backing up current PS profile - [4/9]" -ForegroundColor Green
 
     Rename-Item $profile -NewName Microsoft.PowerShell_profile[BACKUP].ps1
 
