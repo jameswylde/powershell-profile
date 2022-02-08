@@ -133,10 +133,10 @@ Write-Host "Installing Z,PsReadLine,Terminal-Icons modules - [7/9]" -ForegroundC
 Write-Host $sep -ForegroundColor Green
 
     try{
-        Install-Module -Name z -RequiredVersion 1.1.3 -AllowClobber -confirm:$false
-        Install-Module -Name Terminal-Icons -RequiredVersion 0.8.0 -confirm:$false
+        Install-Module -Name z -RequiredVersion 1.1.3 -Scope CurrentUser -AllowClobber -confirm:$false
+        Install-Module -Name Terminal-Icons -RequiredVersion 0.8.0 -Scope CurrentUser -confirm:$false
         #Get-InstalledModule -Name psreadline -AllVersions | Uninstall-Module
-        Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
+        Install-Module PSReadLine -Force -AllowPrerelease -Scope CurrentUser -SkipPublisherCheck
         # Install-Module -Name PSReadLine -RequiredVersion 2.2.0-beta5 -AllowPrerelease -confirm$false
         }
     catch{Write-Output $_.Exception.GetType().Name}
