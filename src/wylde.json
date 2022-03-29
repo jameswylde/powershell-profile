@@ -1,72 +1,89 @@
 {
-    "final_space": true,
-    "console_title": true,
-    "console_title_style": "folder",
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
     "blocks": [
-        {
-            "type": "prompt",
-            "alignment": "left",
-            "horizontal_offset": 0,
-            "vertical_offset": 0,
-            "segments": [
-                {
-                    "type": "path",
-                    "style": "diamond",
-                    "powerline_symbol": "",
-                    "invert_powerline": false,
-                    "foreground": "#0A0A0A",
-                    "background": "#00CC6A",
-                    "leading_diamond": "",
-                    "trailing_diamond": "",
-                    "properties": {
-                        "prefix": "  ",
-                        "style": "folder"
-                    }
-                },
-                {
-                    "type": "git",
-                    "style": "powerline",
-                    "powerline_symbol": "",
-                    "invert_powerline": false,
-                    "foreground": "#193549",
-                    "background": "#ffcb3d",
-                    "leading_diamond": "",
-                    "trailing_diamond": "",
-                    "properties": {
-                        "display_status": true,
-                        "display_stash_count": true,
-                        "display_upstream_icon": true
-                    }
-                },
-                {
-                    "type": "root",
-                    "style": "powerline",
-                    "powerline_symbol": "",
-                    "invert_powerline": false,
-                    "foreground": "#0A0A0A",
-                    "background": "#FF8C00",
-                    "leading_diamond": "",
-                    "trailing_diamond": "",
-                    "properties": null
-                },
-                {
-                    "type": "exit",
-                    "style": "powerline",
-                    "powerline_symbol": "",
-                    "invert_powerline": false,
-                    "foreground": "#0A0A0A",
-                    "background": "#0099BC",
-                    "leading_diamond": "",
-                    "trailing_diamond": "",
-                    "properties": {
-                        "always_enabled": true,
-                        "color_background": true,
-                        "display_exit_code": false,
-                        "error_color": "#E74856",
-                        "prefix": " "
-                    }
-                }
-            ]
-        }
-    ]
-}
+      {
+        "type": "prompt",
+        "alignment": "left",
+        "segments": [
+          {
+            "type": "text",
+            "style": "plain",
+            "foreground": "#FFFFFF",
+            "properties": {
+              "template": "< ",
+              "postfix": ""
+            }
+          },
+          {
+            "type": "text",
+            "style": "plain",
+            "foreground": "#69ff94",
+            "properties": {
+              "prefix": "",
+              "text": "\u279C",
+              "postfix": "",
+              "template": "{{ .UserName }}"
+            }
+          },
+          {
+            "type": "path",
+            "style": "plain",
+            "foreground": "#0063b1",
+            "properties": {
+              "style": "folder"
+            }
+          },
+          {
+            "type": "git",
+            "style": "plain",
+            "foreground": "#cf324c",
+            "properties": {
+              "prefix": "branch:",
+              "fetch_stash_count": true,
+              "fetch_status": true,
+              "fetch_upstream_icon": true,
+              "branch_icon": "",
+              "github_icon": "",
+              "postfix":"",
+              "branch_ahead_icon": "<#88C0D0>\u21e1 </>",
+              "branch_behind_icon": "<#88C0D0>\u21e3 </>",
+              "local_working_icon": "<#FFAFD7>\u002a</>",
+              "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}"
+            
+            }
+          },
+          {
+            "type": "exit",
+            "style": "plain",
+            "foreground": "#BF616A",
+            "properties": {
+              "template": "\u2717",
+              "postfix": ""
+            }
+          },
+          {
+            "type": "root",
+            "style": "plain",
+            "foreground": "#ff9100",
+            "properties": {
+              "prefix": " ",
+              "postfix":"",
+              "template": null
+            
+            }
+          },
+          {
+            "type": "text",
+            "style": "plain",
+            "foreground": "#FFFFFF",
+            "properties": {
+              "template": ">",
+              "postfix": ""
+            }
+          }
+        ]
+      }
+    ],
+    "final_space": true
+  }
+  
