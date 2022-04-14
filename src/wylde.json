@@ -17,7 +17,7 @@
           {
             "type": "text",
             "style": "plain",
-            "foreground": "#69ff94",
+            "foreground": "#0063b1",
             "properties": {
               "prefix": "",
               "text": "\u279C",

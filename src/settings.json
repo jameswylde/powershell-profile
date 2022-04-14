@@ -90,7 +90,7 @@
                 "scrollbarState": "hidden",
                 "source": "Windows.Terminal.PowershellCore",
                 "startingDirectory": "%userprofile%",
-                "tabColor": "#00CC6A",
+                "tabColor": "#0063b1",
                 "useAcrylic": true
             },
             {
