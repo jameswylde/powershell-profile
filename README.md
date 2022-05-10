@@ -8,8 +8,8 @@ Features:
 - Install PSReadline, Z, TerminalIcons modules [PSReadline config @shanselman]
 - Install custom PS profile with config
 - Install required glyped fonts (Caskaydia Cove Nerd)
-- Load my Windows Terminal config
-- Backup previous profiles
+- Load Windows Terminal config
+- Backup previous profile
 
 
 Installation:
