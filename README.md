@@ -1,7 +1,7 @@
 
-![PS](https://imgur.com/IUrjW3k.gif)
+![PS](https://imgur.com/KabIqPC.gif)
 
-What script does:
+Features:
 
 - Optionally install Windows Terminal
 - Install Oh-My-Posh & my adapted OMP theme (match WT profile and Windows accent colour)
